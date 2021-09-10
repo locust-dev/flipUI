@@ -7,21 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19865CDA26EA3933004C4A41 /* PromotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19865CD926EA3889004C4A41 /* PromotionCell.swift */; };
+		19865CDD26EA3B0E004C4A41 /* PromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19865CDC26EA3B0E004C4A41 /* PromotionView.swift */; };
 		19878D9326E797F800DBE7E9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19878D9226E797F800DBE7E9 /* TimerView.swift */; };
-		19878D9526E7986000DBE7E9 /* TimerViewLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19878D9426E7986000DBE7E9 /* TimerViewLogic.swift */; };
+		19878D9526E7986000DBE7E9 /* TimerViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19878D9426E7986000DBE7E9 /* TimerViewHandler.swift */; };
+		19878D9926E7A71300DBE7E9 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19878D9826E7A71300DBE7E9 /* Assembly.swift */; };
+		19878D9E26E8AFDF00DBE7E9 /* NewYearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19878D9D26E8AFDF00DBE7E9 /* NewYearView.swift */; };
+		19878DA026E8B8B100DBE7E9 /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19878D9F26E8B8B100DBE7E9 /* TestController.swift */; };
+		198A848F26E8DEDE00683E4F /* BuyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A848E26E8DEDE00683E4F /* BuyButtonView.swift */; };
+		198A849226E8EA4500683E4F /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A849126E8EA4500683E4F /* RulesView.swift */; };
+		198A849426E8F3E600683E4F /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A849326E8F3E600683E4F /* Configurable.swift */; };
 		198B983C26E634D30089FC50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B983B26E634D30089FC50 /* AppDelegate.swift */; };
 		198B983E26E634D30089FC50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B983D26E634D30089FC50 /* SceneDelegate.swift */; };
 		198B984326E634D30089FC50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198B984126E634D30089FC50 /* Main.storyboard */; };
 		198B984526E634D50089FC50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198B984426E634D50089FC50 /* Assets.xcassets */; };
 		198B984826E634D50089FC50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198B984626E634D50089FC50 /* LaunchScreen.storyboard */; };
-		198B985026E654670089FC50 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B984F26E654670089FC50 /* CollectionViewController.swift */; };
-		198B985226E654C40089FC50 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B985126E654C40089FC50 /* CollectionViewCell.swift */; };
+		198B985026E654670089FC50 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B984F26E654670089FC50 /* MainViewController.swift */; };
+		198B985226E654C40089FC50 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B985126E654C40089FC50 /* CardCell.swift */; };
 		BBE1CFB17AD3A5841660A911 /* Pods_flipUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360F7FBEECF8E278D9688C4C /* Pods_flipUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19865CD926EA3889004C4A41 /* PromotionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCell.swift; sourceTree = "<group>"; };
+		19865CDC26EA3B0E004C4A41 /* PromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionView.swift; sourceTree = "<group>"; };
 		19878D9226E797F800DBE7E9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		19878D9426E7986000DBE7E9 /* TimerViewLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewLogic.swift; sourceTree = "<group>"; };
+		19878D9426E7986000DBE7E9 /* TimerViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewHandler.swift; sourceTree = "<group>"; };
+		19878D9826E7A71300DBE7E9 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		19878D9D26E8AFDF00DBE7E9 /* NewYearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYearView.swift; sourceTree = "<group>"; };
+		19878D9F26E8B8B100DBE7E9 /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+		198A848E26E8DEDE00683E4F /* BuyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButtonView.swift; sourceTree = "<group>"; };
+		198A849126E8EA4500683E4F /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		198A849326E8F3E600683E4F /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		198B983826E634D30089FC50 /* flipUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flipUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		198B983B26E634D30089FC50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		198B983D26E634D30089FC50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,8 +45,8 @@
 		198B984426E634D50089FC50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		198B984726E634D50089FC50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		198B984926E634D50089FC50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		198B984F26E654670089FC50 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		198B985126E654C40089FC50 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		198B984F26E654670089FC50 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		198B985126E654C40089FC50 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		360F7FBEECF8E278D9688C4C /* Pods_flipUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flipUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50859DAADE562C07125A0191 /* Pods-flipUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flipUI.release.xcconfig"; path = "Target Support Files/Pods-flipUI/Pods-flipUI.release.xcconfig"; sourceTree = "<group>"; };
 		923E3C78F57ED567288427AB /* Pods-flipUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flipUI.debug.xcconfig"; path = "Target Support Files/Pods-flipUI/Pods-flipUI.debug.xcconfig"; sourceTree = "<group>"; };
@@ -48,22 +64,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		19878D9026E797D600DBE7E9 /* FlipCards */ = {
+		19865CD726EA3858004C4A41 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				198B984F26E654670089FC50 /* CollectionViewController.swift */,
-				198B985126E654C40089FC50 /* CollectionViewCell.swift */,
+				19865CD826EA3868004C4A41 /* PromotionCell */,
+				19878D9026E797D600DBE7E9 /* CardCell */,
 			);
-			path = FlipCards;
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		19865CD826EA3868004C4A41 /* PromotionCell */ = {
+			isa = PBXGroup;
+			children = (
+				19865CD926EA3889004C4A41 /* PromotionCell.swift */,
+			);
+			path = PromotionCell;
+			sourceTree = "<group>";
+		};
+		19865CDB26EA3AF5004C4A41 /* PromotionView */ = {
+			isa = PBXGroup;
+			children = (
+				19865CDC26EA3B0E004C4A41 /* PromotionView.swift */,
+			);
+			path = PromotionView;
+			sourceTree = "<group>";
+		};
+		19878D9026E797D600DBE7E9 /* CardCell */ = {
+			isa = PBXGroup;
+			children = (
+				198B985126E654C40089FC50 /* CardCell.swift */,
+			);
+			path = CardCell;
 			sourceTree = "<group>";
 		};
 		19878D9126E797E200DBE7E9 /* TimerView */ = {
 			isa = PBXGroup;
 			children = (
 				19878D9226E797F800DBE7E9 /* TimerView.swift */,
-				19878D9426E7986000DBE7E9 /* TimerViewLogic.swift */,
+				19878D9426E7986000DBE7E9 /* TimerViewHandler.swift */,
 			);
 			path = TimerView;
+			sourceTree = "<group>";
+		};
+		19878D9C26E8ADC900DBE7E9 /* NewYearView */ = {
+			isa = PBXGroup;
+			children = (
+				19878D9D26E8AFDF00DBE7E9 /* NewYearView.swift */,
+			);
+			path = NewYearView;
+			sourceTree = "<group>";
+		};
+		198A848D26E8DEC500683E4F /* BuyButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				198A848E26E8DEDE00683E4F /* BuyButtonView.swift */,
+			);
+			path = BuyButtonView;
+			sourceTree = "<group>";
+		};
+		198A849026E8E8F000683E4F /* RulesView */ = {
+			isa = PBXGroup;
+			children = (
+				198A849126E8EA4500683E4F /* RulesView.swift */,
+			);
+			path = RulesView;
 			sourceTree = "<group>";
 		};
 		198B982F26E634D20089FC50 = {
@@ -87,14 +151,22 @@
 		198B983A26E634D30089FC50 /* flipUI */ = {
 			isa = PBXGroup;
 			children = (
-				19878D9026E797D600DBE7E9 /* FlipCards */,
+				198B984F26E654670089FC50 /* MainViewController.swift */,
+				19865CD726EA3858004C4A41 /* Cells */,
+				198A849026E8E8F000683E4F /* RulesView */,
+				198A848D26E8DEC500683E4F /* BuyButtonView */,
+				19878D9C26E8ADC900DBE7E9 /* NewYearView */,
 				19878D9126E797E200DBE7E9 /* TimerView */,
+				19865CDB26EA3AF5004C4A41 /* PromotionView */,
 				198B983B26E634D30089FC50 /* AppDelegate.swift */,
 				198B983D26E634D30089FC50 /* SceneDelegate.swift */,
 				198B984126E634D30089FC50 /* Main.storyboard */,
+				19878D9F26E8B8B100DBE7E9 /* TestController.swift */,
 				198B984426E634D50089FC50 /* Assets.xcassets */,
 				198B984626E634D50089FC50 /* LaunchScreen.storyboard */,
 				198B984926E634D50089FC50 /* Info.plist */,
+				19878D9826E7A71300DBE7E9 /* Assembly.swift */,
+				198A849326E8F3E600683E4F /* Configurable.swift */,
 			);
 			path = flipUI;
 			sourceTree = "<group>";
@@ -212,12 +284,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19878D9926E7A71300DBE7E9 /* Assembly.swift in Sources */,
 				19878D9326E797F800DBE7E9 /* TimerView.swift in Sources */,
-				198B985226E654C40089FC50 /* CollectionViewCell.swift in Sources */,
-				198B985026E654670089FC50 /* CollectionViewController.swift in Sources */,
+				19865CDD26EA3B0E004C4A41 /* PromotionView.swift in Sources */,
+				19878D9E26E8AFDF00DBE7E9 /* NewYearView.swift in Sources */,
+				198B985226E654C40089FC50 /* CardCell.swift in Sources */,
+				198B985026E654670089FC50 /* MainViewController.swift in Sources */,
+				198A849226E8EA4500683E4F /* RulesView.swift in Sources */,
+				198A849426E8F3E600683E4F /* Configurable.swift in Sources */,
 				198B983C26E634D30089FC50 /* AppDelegate.swift in Sources */,
+				19878DA026E8B8B100DBE7E9 /* TestController.swift in Sources */,
+				198A848F26E8DEDE00683E4F /* BuyButtonView.swift in Sources */,
 				198B983E26E634D30089FC50 /* SceneDelegate.swift in Sources */,
-				19878D9526E7986000DBE7E9 /* TimerViewLogic.swift in Sources */,
+				19865CDA26EA3933004C4A41 /* PromotionCell.swift in Sources */,
+				19878D9526E7986000DBE7E9 /* TimerViewHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

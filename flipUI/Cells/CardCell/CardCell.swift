@@ -7,35 +7,35 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class CardCell: UICollectionViewCell {
     
     // MARK: - Locals
     
     private enum Locals {
         
+        
         static let stolotoOrange = UIColor(named: "stolotoOrange")
-        static let lightImage = UIImage(named: "cardLightBack")!
+        
         static let flipToBackImage = UIImage(named: "flipToBack")!
         static let flipToFrontImage = UIImage(named: "flipToFront")!
+        
         static let boughtCheckbox = UIImage(named: "boughtCheckbox")!
         static let prizeImage = UIImage(named: "prizeImage")!
+        
+        enum FrontImage {
+            
+            static let aspectRatio: CGFloat = 1.048
+            static let lightImage = UIImage(named: "cardLightBack")!
+        }
+        
+        enum WhiteFrontView {
+            
+            static let aspectRatio: CGFloat = 1.926
+        }
         
         enum TimeZone {
             
             static let font = UIFont.boldSystemFont(ofSize: 18)
-            
-        }
-        
-        enum BuyButton {
-            
-            static let font = UIFont.boldSystemFont(ofSize: 16)
-            static let line = UIImage(named: "buttonTitleLine")!
-            
-        }
-        
-        enum ButtonCost {
-            
-            static let font = UIFont.systemFont(ofSize: 16)
             
         }
         
@@ -87,10 +87,21 @@ class CollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         drawFront()
         
-        let model = Model(alreadyBought: 4, buyButtonTitle: "Получить карточку", cardCost: "350 ₽", isDrawingOnTitle: "Участвует в розыгрыше", drawingDate: "01.10.2021", drawingStatus: true, timeZone: "Камчатское время", timeAbbreviation: "МСК+7", time: "15:00", cities: "Колыма, Магадан, Хабаровск, Чита", weekNumber: 2, prize: "фотоаппарат (10 шт)")
+        let buttonModel = BuyButtonView.Model(title: "Получить карточку", cost: "350 ₽")
         
+        let model = Model(alreadyBought: 4,
+                          buyButton: buttonModel,
+                          isDrawingOnTitle: "Участвует в розыгрыше",
+                          drawingDate: "01.10.2021",
+                          drawingStatus: true,
+                          timeZone: "Камчатское время",
+                          timeAbbreviation: "МСК+7",
+                          time: "15:00",
+                          cities: "Колыма, Магадан, Хабаровск, Чита",
+                          weekNumber: 2,
+                          prize: "фотоаппарат (10 шт)")
         
-        configure(model: model)
+        configure(with: model)
     }
     
     
@@ -118,7 +129,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     private let frontImage: UIImageView = {
         let image = UIImageView()
-        image.image = Locals.lightImage
+        image.image = Locals.FrontImage.lightImage
         image.layer.cornerRadius = 18
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -131,24 +142,10 @@ class CollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var buyButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = Locals.stolotoOrange
-        button.layer.cornerRadius = 12
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private let buttonTitle: UILabel = {
-        let label = UILabel()
-        label.font = Locals.BuyButton.font
-        return label
-    }()
-    
-    private let buttonCost: UILabel = {
-        let label = UILabel()
-        label.font = Locals.ButtonCost.font
-        return label
+    private lazy var buyButton: BuyButtonView = {
+        let buyButton = BuyButtonView()
+        buyButton.translatesAutoresizingMaskIntoConstraints = false
+        return buyButton
     }()
     
     private let weekCount: UILabel = {
@@ -212,6 +209,16 @@ class CollectionViewCell: UICollectionViewCell {
         return buttonStack
     }()
 
+    private var frontImageSize: CGSize {
+        let imageWidth = frame.width
+        return CGSize(width: imageWidth, height: imageWidth / Locals.FrontImage.aspectRatio)
+    }
+    
+    private var whiteViewSize: CGSize {
+        let imageWidth = frame.width
+        return CGSize(width: imageWidth, height: imageWidth / Locals.WhiteFrontView.aspectRatio)
+    }
+    
     
     // MARK: - Back
     
@@ -266,25 +273,27 @@ class CollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    
+    // MARK: - Drawing
+    
     func drawFront() {
         
         backView.removeFromSuperview()
         contentView.addSubview(frontView)
+        
+        let flipImage = UIImageView(image: Locals.flipToBackImage)
+        flipImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        let checkBox = UIImageView(image: Locals.boughtCheckbox)
+        checkBox.contentMode = .scaleAspectFit
         
         let infoStack = UIStackView(arrangedSubviews: [weekCount, prize, drawingDate])
         infoStack.axis = .vertical
         infoStack.spacing = 5
         infoStack.translatesAutoresizingMaskIntoConstraints = false
         
-        let flipImage = UIImageView(image: Locals.flipToBackImage)
-        flipImage.translatesAutoresizingMaskIntoConstraints = false
-        
-//        let checkbox = UIImageView()
-//        checkbox.image = Locals.boughtCheckbox
-//        checkbox.translatesAutoresizingMaskIntoConstraints = false
-        
-        let boughtStack = UIStackView(arrangedSubviews: [boughtTitle])
-        boughtStack.distribution = .equalSpacing
+        let boughtStack = UIStackView(arrangedSubviews: [checkBox, boughtTitle])
+        boughtStack.distribution = .fill
         boughtStack.spacing = 6
         boughtStack.translatesAutoresizingMaskIntoConstraints = false
         
@@ -296,16 +305,15 @@ class CollectionViewCell: UICollectionViewCell {
         frontView.addSubview(isDrawingOn)
         frontView.addSubview(flipToBack)
         frontView.addSubview(boughtButton)
-        
-        flipToBack.addSubview(flipImage)
-        boughtButton.addSubview(boughtStack)
-        
-        //        let lineImageView = UIImageView(image: Locals.BuyButton.line)
-        //        lineImageView.backgroundColor = .clear
-        
-        drawBuyButton()
+        frontView.addSubview(flipImage)
+        frontView.addSubview(boughtStack)
         
         NSLayoutConstraint.activate([
+            
+            buyButton.heightAnchor.constraint(equalToConstant: 48),
+            buyButton.leadingAnchor.constraint(equalTo: frontView.leadingAnchor, constant: 15),
+            buyButton.trailingAnchor.constraint(equalTo: frontView.trailingAnchor, constant: -15),
+            buyButton.bottomAnchor.constraint(equalTo: frontView.bottomAnchor, constant: -15),
             
             frontView.topAnchor.constraint(equalTo: contentView.topAnchor),
             frontView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -315,16 +323,17 @@ class CollectionViewCell: UICollectionViewCell {
             frontImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             frontImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             frontImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            frontImage.heightAnchor.constraint(equalToConstant: 248),
+            frontImage.heightAnchor.constraint(equalToConstant: frontImageSize.height),
             
             whiteFrontView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             whiteFrontView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             whiteFrontView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            whiteFrontView.heightAnchor.constraint(equalToConstant: 135),
+            whiteFrontView.heightAnchor.constraint(equalToConstant: whiteViewSize.height),
             
             timeZone.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             timeZone.bottomAnchor.constraint(equalTo: whiteFrontView.topAnchor, constant: -12),
             
+            infoStack.topAnchor.constraint(equalTo: whiteFrontView.topAnchor, constant: 11),
             infoStack.bottomAnchor.constraint(equalTo: buyButton.topAnchor, constant: -11),
             infoStack.centerXAnchor.constraint(equalTo: buyButton.centerXAnchor),
             
@@ -346,12 +355,11 @@ class CollectionViewCell: UICollectionViewCell {
             boughtButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             boughtButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             boughtButton.heightAnchor.constraint(equalToConstant: 26),
-            boughtButton.widthAnchor.constraint(equalToConstant: 134),
             
-            boughtStack.topAnchor.constraint(equalTo: boughtButton.topAnchor, constant: 7),
-            boughtStack.leadingAnchor.constraint(equalTo: boughtButton.leadingAnchor, constant: 7),
-            boughtStack.trailingAnchor.constraint(equalTo: boughtButton.trailingAnchor, constant: -7),
-            boughtStack.bottomAnchor.constraint(equalTo: boughtButton.bottomAnchor, constant: -7)
+            boughtStack.topAnchor.constraint(equalTo: boughtButton.topAnchor, constant: 8),
+            boughtStack.leadingAnchor.constraint(equalTo: boughtButton.leadingAnchor, constant: 8),
+            boughtStack.trailingAnchor.constraint(equalTo: boughtButton.trailingAnchor, constant: -8),
+            boughtStack.bottomAnchor.constraint(equalTo: boughtButton.bottomAnchor, constant: -8)
         ])
         
     }
@@ -380,11 +388,15 @@ class CollectionViewCell: UICollectionViewCell {
         backView.addSubview(prizeImage)
         backView.addSubview(timeZoneStack)
         backView.addSubview(flipToFront)
-        
-        drawBuyButton()
+        backView.addSubview(buyButton)
         
         NSLayoutConstraint.activate([
 
+            buyButton.heightAnchor.constraint(equalToConstant: 48),
+            buyButton.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 15),
+            buyButton.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -15),
+            buyButton.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -15),
+            
             backView.topAnchor.constraint(equalTo: contentView.topAnchor),
             backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -415,29 +427,6 @@ class CollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private methods
     
-    private func drawBuyButton() {
-        
-        buyButton.removeFromSuperview()
-        buttonStack.addArrangedSubview(buttonTitle)
-        buttonStack.addArrangedSubview(buttonCost)
-        buyButton.addSubview(buttonStack)
-        contentView.addSubview(buyButton)
-        
-        NSLayoutConstraint.activate([
-            
-            buttonStack.leadingAnchor.constraint(equalTo: buyButton.leadingAnchor, constant: 10),
-            buttonStack.trailingAnchor.constraint(equalTo: buyButton.trailingAnchor, constant: -10),
-            buttonStack.bottomAnchor.constraint(equalTo: buyButton.bottomAnchor, constant: -12),
-            buttonStack.topAnchor.constraint(equalTo: buyButton.topAnchor, constant: 12),
-            
-            buyButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14),
-            buyButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            buyButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            buyButton.heightAnchor.constraint(equalToConstant: 48),
-        ])
-        
-    }
-    
     @objc private func flip() {
         if let collectionView = self.superview as? UICollectionView {
             if let indexPath = collectionView.indexPath(for: self) {
@@ -450,14 +439,13 @@ class CollectionViewCell: UICollectionViewCell {
 
 
 // MARK: - Configurable
-extension CollectionViewCell {
+extension CardCell: Configurable {
     
     struct Model {
         
         let alreadyBought: Int
         
-        let buyButtonTitle: String
-        let cardCost: String
+        let buyButton: BuyButtonView.Model
         
         let isDrawingOnTitle: String
         let drawingDate: String
@@ -473,11 +461,11 @@ extension CollectionViewCell {
         
     }
     
-    func configure(model: Model) {
+    func configure(with model: Model) {
         
         timeZone.text = model.timeZone
-        buttonTitle.text = model.buyButtonTitle
-        buttonCost.text = model.cardCost
+        
+        buyButton.configure(with: model.buyButton)
         
         weekCount.text = "\(model.weekNumber) неделя"
         prize.text = "Приз \(model.prize)"
